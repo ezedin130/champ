@@ -226,6 +226,7 @@ class ProfilePage extends StatelessWidget {
                                   fontSize: 16,
                                   color: Colors.red,
                                   fontWeight: FontWeight.bold,
+                                  
                                ),
                                ),
                            ),
