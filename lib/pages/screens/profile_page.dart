@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:map/constant.dart';
+import 'package:map/pages/screens/my_vehicle.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -26,76 +27,72 @@ class ProfilePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Container(
-              margin: const EdgeInsets.only(top: 40),
-              child: Padding(
-                padding: const EdgeInsets.all(1.0),
-                child: Center(
-                  child: Text(
-                    'YOUR ACCOUNTS',
-                    style: GoogleFonts.getFont(
-                      'Lato',
-                      fontSize: 16,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    margin: const EdgeInsets.all(50),
+                    padding: const EdgeInsets.all(30),
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white,width: 0.5),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            const Padding(
+                              padding: EdgeInsets.all(20.0),
+                              child: Icon(Icons.mail,color: Color.fromARGB(255, 48, 115, 240)),
+                            ),
+                            Center(
+                                child: Text(
+                                  'Email Address',
+                                  style: GoogleFonts.getFont(
+                                    'Lato',
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                              ),
+                          ],
+                        ),
+                        const Divider(),
+                        Padding(
+                          padding: const EdgeInsets.only(top:0),
+                          child: Row(
+                            children: [
+                              const Padding(
+                                padding:EdgeInsets.all(20.0),
+                                child: Icon(Icons.car_crash,color:Color.fromARGB(255, 50, 209, 122)),
+                              ),
+                              Center(
+                                  child: GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context, MaterialPageRoute(builder: (context)=> CarPage())
+                                        );
+                                    },
+                                    child: Text(
+                                      'Vehicles',
+                                      style: GoogleFonts.getFont(
+                                      'Lato',
+                                      fontSize: 16,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                                                     ),
+                                  ),
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
                     ),
                   ),
                 ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.all(50),
-              padding: const EdgeInsets.all(40),
-              decoration: BoxDecoration(
-                border: Border.all(color: Colors.white,width: 0.5),
-                borderRadius: BorderRadius.circular(8)
-              ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.all(20.0),
-                        child: Icon(Icons.mail,color: Color.fromARGB(255, 48, 115, 240)),
-                      ),
-                      Center(
-                        child: Text(
-                          'Email Address',
-                          style: GoogleFonts.getFont(
-                            'Lato',
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  Padding(
-                    padding: const EdgeInsets.only(top:0),
-                    child: Row(
-                      children: [
-                        const Padding(
-                          padding:EdgeInsets.all(20.0),
-                          child: Icon(Icons.car_crash,color:Color.fromARGB(255, 50, 209, 122)),
-                        ),
-                        Center(
-                          child: Text(
-                            'Vehicles',
-                            style: GoogleFonts.getFont(
-                            'Lato',
-                            fontSize: 16,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                          ),
-                         ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+              ],
             ),
             Text(
               'PREFERENCES',
@@ -182,11 +179,11 @@ class ProfilePage extends StatelessWidget {
                 child: Row(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(10),
                       child:Image.asset('lib/assets/instagram.png',width: 50,height: 50,)
                     ),
                     const Padding(
-                      padding: EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(35.0),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -195,44 +192,50 @@ class ProfilePage extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.all(10.0),
                     ),
-                     Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child:Image.asset('lib/assets/facebook.png',width: 50,height: 50,)
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.all(10.0),
-                    ),
                   ],
                 ),
               
              ),
+             Container( 
+              margin: const EdgeInsets.only(bottom:30 ,left: 30),
+              padding: const EdgeInsets.only(left: 50,top: 10),
+              child: Row(
+                children: [
+                  Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child:Image.asset('lib/assets/facebook.png',width: 50,height: 50,)
+                        ),
+                ],
+              ),
+                ),
              Padding(
                padding: const EdgeInsets.all(30.0),
                child: Row(
                  children: [
                    Expanded(
-                     child: Container(
-                      decoration: BoxDecoration(           
-                        border: Border.all(color: Colors.white,width: 0.5),
-                        borderRadius: BorderRadius.circular(5)
-                      ),
-                         child: Padding(
-                           padding: const EdgeInsets.all(8.0),
-                           child: InkWell(
-                            onTap: () {},
-                             child: Text('                                         Log Out',
-                               style: GoogleFonts.getFont(
-                                 'Lato',
-                                  fontSize: 16,
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.bold,
-                                  
+                       child: Container(
+                        decoration: BoxDecoration(           
+                         border: Border.all(color: Colors.white,width: 0.5),
+                          borderRadius: BorderRadius.circular(5)
+                        ),
+                           child: Padding(
+                             padding: const EdgeInsets.all(8.0),
+                             child: InkWell(
+                              onTap: () {},
+                               child: Center(
+                                 child: Text('Log Out',
+                                   style: GoogleFonts.getFont(
+                                     'Lato',
+                                      fontSize: 16,
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.bold,
+                                   ),
+                                   ),
                                ),
-                               ),
+                             ),
                            ),
-                         ),
-                       
-                     ),
+
+                       ),
                    ),
                  ],
                ),
