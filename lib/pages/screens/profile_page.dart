@@ -179,41 +179,62 @@ class ProfilePage extends StatelessWidget {
              Container(
                margin: const EdgeInsets.all(50),
               padding: const EdgeInsets.all(30),
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8),
-                    child:Image.asset('lib/assets/instagram.png',width: 50,height: 50,)
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child:Image.asset('lib/assets/twitter.png',width: 50,height: 50,)
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                   Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child:Image.asset('lib/assets/facebook.png',width: 50,height: 50,)
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(10.0),
-                  ),
-                ],
-              ),
-             ),
-             Container(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8),
+                      child:Image.asset('lib/assets/instagram.png',width: 50,height: 50,)
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(10.0),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:Image.asset('lib/assets/twitter.png',width: 50,height: 50,)
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(10.0),
+                    ),
+                     Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child:Image.asset('lib/assets/facebook.png',width: 50,height: 50,)
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.all(10.0),
+                    ),
+                  ],
+                ),
               
-               child: Text('Log Out',
-                 style: GoogleFonts.getFont(
-                   'Lato',
-                    fontSize: 16,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                 ),),
+             ),
+             Padding(
+               padding: const EdgeInsets.all(30.0),
+               child: Row(
+                 children: [
+                   Expanded(
+                     child: Container(
+                      decoration: BoxDecoration(           
+                        border: Border.all(color: Colors.white,width: 0.5),
+                        borderRadius: BorderRadius.circular(5)
+                      ),
+                         child: Padding(
+                           padding: const EdgeInsets.all(8.0),
+                           child: InkWell(
+                            onTap: () {},
+                             child: Text('                                         Log Out',
+                               style: GoogleFonts.getFont(
+                                 'Lato',
+                                  fontSize: 16,
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.bold,
+                               ),
+                               ),
+                           ),
+                         ),
+                       
+                     ),
+                   ),
+                 ],
+               ),
              )
           ],
         ),
