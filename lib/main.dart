@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:map/pages/main_screen.dart';
 import 'package:map/pages/screens/login_page.dart';
 import 'package:map/pages/screens/register_page.dart';
-import 'package:map/pages/screens/welcome_page.dart';
 
 void main() => runApp(
       DevicePreview(
