@@ -15,3 +15,4 @@ final inputdeco = InputDecoration(
   ),
 );
 const ipadd = 'http://192.168.137.1:8080';
+const googleMapApi = 'AIzaSyC2uueWwYoJJMaQHOMO02vv5llVDD-XWag';
