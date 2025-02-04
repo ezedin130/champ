@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: MainScreen.id,
       routes: {
-        'register': (context) => RegisterPage(),
-        'login': (context) => LoginPage(),
+        'register': (context) => const RegisterPage(),
+        'login': (context) => const LoginPage(),
         'home': (context) => MainScreen()
       },
     );

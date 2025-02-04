@@ -14,3 +14,4 @@ final inputdeco = InputDecoration(
     letterSpacing: 0.2,
   ),
 );
+const ipadd = 'http://192.168.137.1:8080';

@@ -1,12 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:map/constant.dart';
+import 'package:map/controllers/authcontroller.dart';
 import 'package:map/pages/main_screen.dart';
 import 'package:map/pages/screens/register_page.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   static const id = 'login';
+
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final _authcontroller = AuthController();
+
+  late String email;
+
+  late String password;
+
+  bool isLoading = false;
+
+  loginUser() async {
+    setState(() {
+      isLoading = true;
+    });
+    await _authcontroller
+        .signinuser(context: context, email: email, password: password)
+        .whenComplete(() {
+      _formKey.currentState!.reset();
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +77,7 @@ class LoginPage extends StatelessWidget {
               ),
               TextFormField(
                 onChanged: (value) {
-                  //email = value;
+                  email = value;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -73,7 +104,7 @@ class LoginPage extends StatelessWidget {
               ),
               TextFormField(
                 onChanged: (value) {
-                  //password = value;
+                  password = value;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -101,7 +132,7 @@ class LoginPage extends StatelessWidget {
               InkWell(
                 onTap: () {
                   if (_formKey.currentState?.validate() ?? false) {
-                    Navigator.pushNamed(context, MainScreen.id);
+                    loginUser();
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text("Please fill all fields correctly")));

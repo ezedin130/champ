@@ -1,12 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:map/constant.dart';
-import 'package:map/pages/main_screen.dart';
+import 'package:map/controllers/authcontroller.dart';
 import 'package:map/pages/screens/login_page.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   static const id = 'register';
+
+  const RegisterPage({super.key});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+}
+
+class _RegisterPageState extends State<RegisterPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final _authcontroller = AuthController();
+
+  late String email;
+
+  late String password;
+
+  late String fullName;
+
+  bool isLoading = false;
+
+  registerUsers() async {
+    setState(() {
+      isLoading = true;
+    });
+    await _authcontroller
+        .signupusers(
+            context: context,
+            fullName: fullName,
+            email: email,
+            password: password)
+        .whenComplete(() {
+      _formKey.currentState!.reset();
+      setState(() {
+        isLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +82,7 @@ class RegisterPage extends StatelessWidget {
               ),
               TextFormField(
                 onChanged: (value) {
-                  //name = value;
+                  fullName = value;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -72,7 +108,7 @@ class RegisterPage extends StatelessWidget {
               ),
               TextFormField(
                 onChanged: (value) {
-                  //email = value;
+                  email = value;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -99,7 +135,7 @@ class RegisterPage extends StatelessWidget {
               ),
               TextFormField(
                 onChanged: (value) {
-                  //password = value;
+                  password = value;
                 },
                 validator: (value) {
                   if (value!.isEmpty) {
@@ -152,7 +188,7 @@ class RegisterPage extends StatelessWidget {
               InkWell(
                 onTap: () {
                   if (_formKey.currentState?.validate() ?? false) {
-                    Navigator.pushNamed(context, MainScreen.id);
+                    registerUsers();
                   } else {
                     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                         content: Text("Please fill all fields correctly")));
