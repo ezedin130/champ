@@ -33,7 +33,6 @@ class _CarPageState extends State<CarPage> {
             context,
             MaterialPageRoute(builder: (context) => const VehiclePage()),
           );
-
           // Update the selected cars when returning
           if (result != null && result is List<String>) {
             setState(() {
