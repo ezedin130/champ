@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart'
     if (KIsWeb) 'package:google_maps_flutter_web/google_maps_flutter_web.dart';
+import 'package:location/location.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -10,8 +11,15 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
+  Location _locationController = new Location();
   static const LatLng _pkocha = LatLng(11.0816, 39.7434);
   static const LatLng _pdessie = LatLng(11.1300, 39.6300);
+  LatLng? _currentP = null;
+  @override
+  void initState() {
+    super.initState();
+    getLocationUpdates();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +69,36 @@ class _MapPageState extends State<MapPage> {
             )
           },
         ));
+  }
+
+  Future<void> getLocationUpdates() async {
+    bool _serviceEnabled;
+    PermissionStatus _permissionGranted;
+    _serviceEnabled = await _locationController.serviceEnabled();
+    if (_serviceEnabled) {
+      _serviceEnabled = await _locationController.requestService();
+    } else {
+      return;
+    }
+    _permissionGranted = await _locationController.hasPermission();
+    if (_permissionGranted == PermissionStatus.denied) {
+      _permissionGranted = await _locationController.requestPermission();
+      if (_permissionGranted != PermissionStatus.granted) {
+        return;
+      }
+    }
+    _locationController.onLocationChanged
+        .listen((LocationData currentLocation) {
+      if (currentLocation.latitude != null &&
+          currentLocation.longitude != null) {
+        setState(() {
+          _currentP =
+              LatLng(currentLocation.latitude!, currentLocation.longitude!);
+              print(_currentP);
+        });
+        
+      }
+    });
   }
 }
 //AIzaSyC2uueWwYoJJMaQHOMO02vv5llVDD-XWag

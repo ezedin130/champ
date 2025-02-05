@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:map/constant.dart';
 import 'package:map/controllers/authcontroller.dart';
-import 'package:map/pages/main_screen.dart';
 import 'package:map/pages/screens/register_page.dart';
 
 class LoginPage extends StatefulWidget {

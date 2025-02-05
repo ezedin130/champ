@@ -6,11 +6,12 @@ import 'package:map/pages/screens/login_page.dart';
 import 'package:map/pages/screens/register_page.dart';
 
 void main() => runApp(
-      DevicePreview(
-        enabled: !kReleaseMode,
-        builder: (context) => const MyApp(),
-      ),
-    );
+      //DevicePreview(
+       // enabled: !kReleaseMode,
+       // builder: (context) => 
+        const MyApp(),
+      );
+    
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -18,8 +19,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
+      //locale: DevicePreview.locale(context),
+      //builder: DevicePreview.appBuilder,
       title: 'Champ',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
