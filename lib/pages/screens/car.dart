@@ -7,7 +7,7 @@ class CarPage extends StatefulWidget {
 
   @override
   State<CarPage> createState() => _CarPageState();
-}
+} 
 
 class _CarPageState extends State<CarPage> {
   List<String> selectedCars = []; // To store multiple selected cars
