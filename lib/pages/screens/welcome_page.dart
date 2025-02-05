@@ -35,8 +35,8 @@ class WelcomePage extends StatelessWidget {
           ),
           Image.asset(
             'lib/assets/car.webp',
-            width: 300,
-            height: 200,
+            width:500,
+            height:500,
           ),
           TextButton(
             onPressed: () {
