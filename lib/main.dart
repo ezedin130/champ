@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         'login': (context) => const LoginPage(),
         'home': (context) => MainScreen()
       },
-      home: const ProfilePage(),
+      home: const WelcomePage(),
       
     );
   }

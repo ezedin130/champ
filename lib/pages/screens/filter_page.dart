@@ -45,7 +45,7 @@ class _VehiclePageState extends State<VehiclePage> {
           final isSelected = selectedCars.contains(car);
 
           return GestureDetector(
-            onTap: () { 
+            onTap: () {
               setState(() {
                 if (isSelected) {
                   selectedCars.remove(car);
