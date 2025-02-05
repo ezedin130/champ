@@ -1,8 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:map/pages/screens/car.dart';
+import 'package:map/pages/screens/filter_page.dart';
 import 'package:map/pages/screens/login_page.dart';
+import 'package:map/pages/screens/welcome_page.dart';
 //import 'package:map/pages/screens/welcome_page.dart';
 
 void main() => runApp(
@@ -25,12 +26,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+         scaffoldBackgroundColor: Colors.black12,
       ),
       routes: {
         'register':(context)=> LoginPage(),
         'login':(context)=> LoginPage()
       },
-      home: const CarPage(),
+      home: const VehiclePage(),
+      
     );
   }
 }
