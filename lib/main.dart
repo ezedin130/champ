@@ -1,8 +1,9 @@
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:map/pages/screens/car.dart';
 import 'package:map/pages/screens/login_page.dart';
-import 'package:map/pages/screens/welcome_page.dart';
+//import 'package:map/pages/screens/welcome_page.dart';
 
 void main() => runApp(
       DevicePreview(
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         'register':(context)=> LoginPage(),
         'login':(context)=> LoginPage()
       },
-      home: const WelcomePage(),
+      home: const CarPage(),
     );
   }
 }
