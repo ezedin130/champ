@@ -5,6 +5,8 @@ import 'package:map/pages/screens/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
   static const id = 'home';
+
+  const MainScreen({super.key});
   @override
   State<MainScreen> createState() => _MainScreenState();
 }

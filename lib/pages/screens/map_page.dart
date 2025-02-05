@@ -15,13 +15,13 @@ class MapPage extends StatefulWidget {
 }
 
 class _MapPageState extends State<MapPage> {
-  Location _locationController = new Location();
+  final Location _locationController = Location();
   final Completer<GoogleMapController> _mapcontroller =
    Completer<GoogleMapController>();
   static const LatLng _pharbu = LatLng(10.9202, 39.7871);
   static const LatLng _pdessie = LatLng(11.1300, 39.6300);
-  LatLng? _currentP = null;
-  Map<PolylineId, Polyline> _polylines = {};
+  LatLng? _currentP;
+  final Map<PolylineId, Polyline> _polylines = {};
   @override
   void initState() {
     super.initState();
@@ -95,22 +95,22 @@ class _MapPageState extends State<MapPage> {
   }
   Future<void> _cameraPosition(LatLng pos)async{
     final GoogleMapController controller = await _mapcontroller.future;
-    CameraPosition _newCameraPosition = CameraPosition(target: pos,zoom: 13,);
-    await controller.animateCamera(CameraUpdate.newCameraPosition(_newCameraPosition));
+    CameraPosition newCameraPosition = CameraPosition(target: pos,zoom: 13,);
+    await controller.animateCamera(CameraUpdate.newCameraPosition(newCameraPosition));
   }
   Future<void> getLocationUpdates() async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    _serviceEnabled = await _locationController.serviceEnabled();
-    if (_serviceEnabled) {
-      _serviceEnabled = await _locationController.requestService();
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    serviceEnabled = await _locationController.serviceEnabled();
+    if (serviceEnabled) {
+      serviceEnabled = await _locationController.requestService();
     } else {
       return;
     }
-    _permissionGranted = await _locationController.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await _locationController.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
+    permissionGranted = await _locationController.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await _locationController.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
         return;
       }
     }
@@ -133,9 +133,9 @@ class _MapPageState extends State<MapPage> {
       googleApiKey: googleMapApi,
       request: PolylineRequest(origin: PointLatLng(_currentP!.latitude,_currentP!.longitude), destination: PointLatLng(_pdessie.latitude,_pdessie.longitude), mode: TravelMode.driving,),);
     if(result.points.isNotEmpty){
-      result.points.forEach((PointLatLng point){
+      for (var point in result.points) {
         polyLineCoordinates.add(LatLng(point.latitude,point.longitude));
-      });
+      }
     }
     else{
       print(result.errorMessage);

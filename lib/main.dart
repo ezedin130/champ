@@ -37,7 +37,6 @@ class MyApp extends StatelessWidget {
         'home': (context) => MainScreen()
       },
       home: const ProfilePage(),
-      home: const VehiclePage(),
       
     );
   }
