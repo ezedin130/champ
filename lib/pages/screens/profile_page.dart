@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:map/pages/screens/my_vehicle.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -69,7 +70,7 @@ class ProfilePage extends StatelessWidget {
                                   child: GestureDetector(
                                     onTap: () {
                                       Navigator.push(
-                                        context, MaterialPageRoute(builder: (context)=> CarPage())
+                                        context, MaterialPageRoute(builder: (context)=>const  CarPage())
                                         );
                                     },
                                     child: Text(

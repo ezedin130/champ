@@ -43,47 +43,6 @@ class MapPageState extends State<MapPage> {
 
   final TextEditingController _searchController = TextEditingController();
 
-class _MapPageState extends State<MapPage> {
-  final Location _locationController = Location();
-  final Completer<GoogleMapController> _mapcontroller =
-   Completer<GoogleMapController>();
-  static const LatLng _pharbu = LatLng(10.9202, 39.7871);
-  static const LatLng _pdessie = LatLng(11.1300, 39.6300);
-  LatLng? _currentP;
-  final Map<PolylineId, Polyline> _polylines = {};
-class MapPageState extends State<MapPage> {
-  LatLng? _currentLocation;
-  final LatLng _destination =
-      const LatLng(11.06698476344123, 39.742075673508175);
-
-  // final LatLng total3 = const LatLng(11.144859982466429, 39.6439907392908);
-
-  // final LatLng dawdo = const LatLng(11.140754796481549, 39.63142972959967);
-
-  // final LatLng ybp = const LatLng(11.145003487531914, 39.63582782848319);
-
-  // final LatLng ajip = const LatLng(11.115745319810488, 39.63278137363682);
-
-  // final LatLng total1 = const LatLng(11.086298277528487, 39.736210492771086);
-
-  // final LatLng total2 = const LatLng(11.06698476344123, 39.742075673508175);
-
-  // final LatLng yetebaberut =
-  //     const LatLng(11.089240245048883, 39.72042426384241);
-
-  // final LatLng oldshell = const LatLng(11.087068843386573, 39.71128663042189);
-
-  // final LatLng shell = const LatLng(11.081548445153029, 39.74352687293633);
-  bool _isLoading = true;
-
-  // Sets to hold markers and polylines for GoogleMap.
-  final Set<Marker> _markers = {};
-  final Set<Polyline> _polylines = {};
-
-  GoogleMapController? _mapController;
-
-  final TextEditingController _searchController = TextEditingController();
-
   @override
   void initState() {
     super.initState();
@@ -381,5 +340,4 @@ class MapPageState extends State<MapPage> {
       ),
     );
   }
-}
 }
