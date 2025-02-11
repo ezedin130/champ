@@ -5,6 +5,8 @@ import 'package:map/pages/screens/profile_page.dart';
 
 class MainScreen extends StatefulWidget {
   static const id = 'home';
+
+  const MainScreen({super.key});
   @override
   State<MainScreen> createState() => _MainScreenState();
 }
@@ -13,7 +15,7 @@ class _MainScreenState extends State<MainScreen> {
   int _myIndex = 0;
   final List pages = [
     MapPage(),
-    const FilterPage(),
+    const VehiclePage(),
     const ProfilePage()
 
   ];
