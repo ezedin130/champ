@@ -12,27 +12,8 @@ class MapPage extends StatefulWidget {
 
 class MapPageState extends State<MapPage> {
   LatLng? _currentLocation;
-  final LatLng _destination =
-      const LatLng(11.06698476344123, 39.742075673508175);
+   LatLng? _destination;
 
-  // final LatLng total3 = const LatLng(11.144859982466429, 39.6439907392908);
-
-  // final LatLng dawdo = const LatLng(11.140754796481549, 39.63142972959967);
-
-  // final LatLng ybp = const LatLng(11.145003487531914, 39.63582782848319);
-
-  // final LatLng ajip = const LatLng(11.115745319810488, 39.63278137363682);
-
-  // final LatLng total1 = const LatLng(11.086298277528487, 39.736210492771086);
-
-  // final LatLng total2 = const LatLng(11.06698476344123, 39.742075673508175);
-
-  // final LatLng yetebaberut =
-  //     const LatLng(11.089240245048883, 39.72042426384241);
-
-  // final LatLng oldshell = const LatLng(11.087068843386573, 39.71128663042189);
-
-  // final LatLng shell = const LatLng(11.081548445153029, 39.74352687293633);
   bool _isLoading = true;
 
   // Sets to hold markers and polylines for GoogleMap.
@@ -57,8 +38,8 @@ class MapPageState extends State<MapPage> {
       setState(() {
         _currentLocation = location;
       });
-      _fetchAndSetRoute(location, _destination);
-      _addMarkers();
+      _fetchAndSetRoute(location, _destination!);
+      //_addMarkers();
     } catch (e) {
       print('Error fetching location: $e');
       setState(() {
