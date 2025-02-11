@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:map/pages/screens/my_vehicle.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  static const id = 'profile';
 
   @override
   Widget build(BuildContext context) {

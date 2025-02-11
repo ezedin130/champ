@@ -59,6 +59,6 @@ class AuthController {
           });
     } catch (e) {
       throw Exception('Error during signin : $e');
-    }
+     }
   }
 }

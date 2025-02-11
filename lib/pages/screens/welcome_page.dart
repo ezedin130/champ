@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:map/pages/screens/register_page.dart';
 
 class WelcomePage extends StatelessWidget {
-  const WelcomePage({super.key});
+  static const id = 'welcome';
 
   @override
   Widget build(BuildContext context) {

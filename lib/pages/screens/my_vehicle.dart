@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CarPage extends StatefulWidget {
-  static const id = 'my vehicles';
+  static const id = 'vehicles';
 
   const CarPage({super.key});
  

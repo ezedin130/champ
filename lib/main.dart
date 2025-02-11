@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:map/pages/screens/filter_page.dart';
 import 'package:map/pages/main_screen.dart';
 import 'package:map/pages/screens/login_page.dart';
+import 'package:map/pages/screens/my_vehicle.dart';
 import 'package:map/pages/screens/profile_page.dart';
 import 'package:map/pages/screens/register_page.dart';
 import 'package:map/pages/screens/welcome_page.dart';
@@ -33,14 +34,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      initialRoute: MainScreen.id,
+      initialRoute: WelcomePage.id,
       routes: {
+        'welcome': (context) =>  WelcomePage(),
         'register': (context) => const RegisterPage(),
         'login': (context) => const LoginPage(),
-        'home': (context) => MainScreen()
+        'home': (context) => const MainScreen(),
+        'profile': (context) =>  ProfilePage(),
+        'vehicles': (context) =>  const CarPage(),
       },
-      home: const WelcomePage(),
-      
     );
   }
 }

@@ -16,8 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   final List pages = [
     MapPage(),
     const VehiclePage(),
-    const ProfilePage()
-
+     ProfilePage()
   ];
   @override
   Widget build(BuildContext context) {
