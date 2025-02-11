@@ -54,7 +54,7 @@ class AuthController {
             //push and remove until us user to prevent the client to going back to the screen
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => MainScreen()),
+                MaterialPageRoute(builder: (context) => const MainScreen()),
                 (route) => false);
           });
     } catch (e) {
