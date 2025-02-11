@@ -12,9 +12,10 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   int _myIndex = 0;
   final List pages = [
-    const MapPage(),
+    MapPage(),
     const FilterPage(),
     const ProfilePage()
+
   ];
   @override
   Widget build(BuildContext context) {
