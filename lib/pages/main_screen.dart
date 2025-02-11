@@ -3,6 +3,7 @@ import 'package:map/pages/screens/filter_page.dart';
 import 'package:map/pages/screens/map_page.dart';
 import 'package:map/pages/screens/profile_page.dart';
 
+
 class MainScreen extends StatefulWidget {
   static const id = 'home';
 

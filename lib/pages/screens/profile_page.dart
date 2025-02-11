@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:map/pages/screens/my_vehicle.dart';
+import 'package:map/pages/screens/notification_page.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
@@ -64,17 +65,17 @@ class ProfilePage extends StatelessWidget {
                             children: [
                               const Padding(
                                 padding:EdgeInsets.all(20.0),
-                                child: Icon(Icons.car_crash,color:Color.fromARGB(255, 50, 209, 122)),
+                                child: Icon(Icons.car_crash,color:Color.fromARGB(255, 46, 112, 255)),
                               ),
                               Center(
                                   child: GestureDetector(
                                     onTap: () {
                                       Navigator.push(
-                                        context, MaterialPageRoute(builder: (context)=> CarPage())
+                                        context, MaterialPageRoute(builder: (context)=> const CarPage())
                                         );
                                     },
                                     child: Text(
-                                      'Vehicles',
+                                      'My Vehicles',
                                       style: GoogleFonts.getFont(
                                       'Lato',
                                       fontSize: 16,
@@ -116,16 +117,21 @@ class ProfilePage extends StatelessWidget {
                         children: [
                           const Padding(
                             padding: EdgeInsets.all(20.0),
-                            child: Icon(Icons.message,color: Color.fromARGB(255, 255, 255, 255)),
+                            child: Icon(Icons.message_outlined,color: Color.fromARGB(255, 25, 125, 238)),
                           ),
                           Center(
-                            child: Text(
-                              'Notification',
-                              style: GoogleFonts.getFont(
-                                'Lato',
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=> NotificationPage()));
+                              },
+                              child: Text(
+                                'Notification',
+                                style: GoogleFonts.getFont(
+                                  'Lato',
+                                  fontSize: 16,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -141,20 +147,21 @@ class ProfilePage extends StatelessWidget {
                             child: Icon(Icons.local_gas_station,color: Color.fromARGB(255, 48, 115, 240)),
                           ),
                               Center(
-                                child: InkWell(
-                                  onTap: () {
-                                  ///Navigator.pushNamed(context, savedstations.id);
-                                  },
-                                  child: Text(
-                                    'My Stations',
-                                     style: GoogleFonts.getFont(
-                                     'Lato',
-                                     fontSize: 16,
-                                     color: Colors.white,
-                                     fontWeight: FontWeight.bold,
+                                  child: GestureDetector(
+                                  /* onTap: (){
+                                      Navigator.push(context, MaterialPageRoute(builder: (context)=> MyStationPage()))
+                                    },*/
+                                    child: Text(
+                                      'My Stations',
+                                       style: GoogleFonts.getFont(
+                                       'Lato',
+                                       fontSize: 16,
+                                       color: Colors.white,
+                                       fontWeight: FontWeight.bold,
+                                      ),
                                     ),
                                   ),
-                                ),
+                                
                               ),
                             ],
                           ),

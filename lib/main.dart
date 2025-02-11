@@ -4,19 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:map/pages/screens/filter_page.dart';
 import 'package:map/pages/main_screen.dart';
 import 'package:map/pages/screens/login_page.dart';
+import 'package:map/pages/screens/noti.dart';
 import 'package:map/pages/screens/profile_page.dart';
 import 'package:map/pages/screens/register_page.dart';
 import 'package:map/pages/screens/welcome_page.dart';
-void main() => runApp(
-      DevicePreview(
-       enabled: !kReleaseMode,
-       builder: (context) => 
-        const MyApp(),
-      )
-    
-);
+void main ()async{
+  WidgetsFlutterBinding.ensureInitialized();
+  Noti().initNotification();
+  runApp(MyApp());
+}
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+    MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +27,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.black
-         scaffoldBackgroundColor: Colors.black12,
       ),
       //initialRoute: MainScreen.id,
       routes: {
         'register': (context) => const RegisterPage(),
         'login': (context) => const LoginPage(),
-        'home': (context) => MainScreen()
+        'home': (context) => const MainScreen()
       },
-      home: const WelcomePage(),
+      home: const ProfilePage(),
       
     );
   }

@@ -14,17 +14,23 @@ class _VehiclePageState extends State<VehiclePage> {
     'Volkswagen ID.4', 'Audi e-tron', 'Rivian R1T', 'Ford F-150 Lightning',
     'GMC Hummer EV', 'Tesla Cybertruck', 'Mercedes-Benz EQB'
   ];
-  final List<String> selectedCars = []; // Track selected cars
+  final List<String> selectedCars = [];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black12,
+          leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white, size: 25), 
+          onPressed: () {
+           Navigator.pop(context); 
+    },
+  ),
         title: const Text(
           'EV CARS',
           style: TextStyle(
-            color: Colors.white, // Title text color
+            color: Colors.white, 
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
@@ -33,7 +39,7 @@ class _VehiclePageState extends State<VehiclePage> {
           IconButton(
             icon: const Icon(Icons.done),
             onPressed: () {
-              Navigator.pop(context, selectedCars); // Return selected cars
+              Navigator.pop(context, selectedCars); 
             },
           )
         ],
@@ -58,7 +64,7 @@ class _VehiclePageState extends State<VehiclePage> {
               margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: isSelected ? Colors.green : Colors.blueAccent,
+                color: isSelected ? const Color.fromARGB(255, 0, 0, 0) : const Color.fromARGB(255, 0, 0, 0),
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
