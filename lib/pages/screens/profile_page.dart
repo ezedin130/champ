@@ -4,7 +4,7 @@ import 'package:map/pages/screens/my_vehicle.dart';
 import 'package:map/pages/screens/notification_page.dart';
 
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+  static const id = 'profile';
 
   @override
   Widget build(BuildContext context) {
@@ -71,8 +71,9 @@ class ProfilePage extends StatelessWidget {
                                   child: GestureDetector(
                                     onTap: () {
                                       Navigator.push(
-                                        context, MaterialPageRoute(builder: (context)=> const CarPage())
-                                        );
+                                        context, MaterialPageRoute(builder: (context)=> CarPage()
+                                         )
+                                      );
                                     },
                                     child: Text(
                                       'My Vehicles',

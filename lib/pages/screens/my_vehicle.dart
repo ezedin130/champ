@@ -5,7 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:map/pages/screens/filter_page.dart';
 
 class CarPage extends StatefulWidget {
-  //static const id = 'my vehicles';
+  //static const id = 'vehicles';
 
   const CarPage({super.key});
  

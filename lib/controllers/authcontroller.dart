@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:map/constant.dart';
-import 'package:map/models/User.dart';
+import 'package:map/models/user_model.dart';
 import 'package:map/pages/main_screen.dart';
 import 'package:map/pages/screens/login_page.dart';
 import 'package:map/services/manage_http_request.dart';
@@ -54,11 +54,11 @@ class AuthController {
             //push and remove until us user to prevent the client to going back to the screen
             Navigator.pushAndRemoveUntil(
                 context,
-                MaterialPageRoute(builder: (context) => MainScreen()),
+                MaterialPageRoute(builder: (context) => const MainScreen()),
                 (route) => false);
           });
     } catch (e) {
       throw Exception('Error during signin : $e');
-    }
+     }
   }
 }
