@@ -16,7 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   int _myIndex = 0;
   final List pages = [
     MapPage(),
-    const VehiclePage(),
+     VehiclePage(),
      ProfilePage()
   ];
   @override

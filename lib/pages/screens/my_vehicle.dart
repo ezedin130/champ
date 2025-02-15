@@ -1,115 +1,72 @@
-import 'dart:convert';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:map/pages/screens/filter_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class CarPage extends StatefulWidget {
-  //static const id = 'vehicles';
+class MyVehiclePage extends StatefulWidget {
+    static const id = 'vehicle';
+  const MyVehiclePage({super.key});
 
-  const CarPage({super.key});
- 
   @override
-  State<CarPage> createState() => _CarPageState();
-} 
-
-class _CarPageState extends State<CarPage> {
-  List<String> selectedCars = []; 
-
-@override
-void initState(){
-  super.initState();
-  loadSavedCars();
+  State<MyVehiclePage> createState() => _MyVehiclePageState();
 }
 
- Future<void> loadSavedCars() async {
-    final prefs = await SharedPreferences.getInstance();
-    final String? savedCars = prefs.getString('selectedCars');
+class _MyVehiclePageState extends State<MyVehiclePage> {
+  List<String> mySelectedCars = [];
 
-    if (savedCars != null) {
-      setState(() {
-        selectedCars = List<String>.from(jsonDecode(savedCars));
-      });
-    }
+  @override
+  void initState() {
+    super.initState();
+    _loadSelectedCars(); 
   }
 
-  Future<void> saveCars() async {
+  Future<void> _loadSelectedCars() async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString('selectedCars', jsonEncode(selectedCars));
-  }
-
-  void deleteCar(int index) {
+    final savedCars = prefs.getStringList('selectedCars') ?? [];
     setState(() {
-      selectedCars.removeAt(index); 
+      mySelectedCars = savedCars;
     });
-    saveCars(); 
   }
 
-@override
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white, size: 25), 
-          onPressed: () {
-           Navigator.pop(context); 
-    },
-  ),
-        title:  Center(
-            child: Text(
-              'My Vehicles',
-                style: GoogleFonts.getFont(
-                'Lato',
-                fontSize: 25,
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-          ),
-        ),
-        ),
+        title: Text("My Selected Vehicles",
+        style: GoogleFonts.getFont(
+          'Lato',
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: Colors.teal
+        ),),
       ),
-        body: selectedCars.isEmpty
-            ?  Center(child: Text(
-              'No Item Selected',
-              style: GoogleFonts.getFont
-              ('Lato',
-              color: Colors.white
-              ),
-            )
-          )
-            : ListView.builder(
-                itemCount:selectedCars.length,
-                itemBuilder: (context, index) {
-                   return ListTile(
-                   title: Text(selectedCars[index],
-                   style:
-                   GoogleFonts.getFont
-                       ('Lato',
-                        color: Colors.white
-         ),
-        ),
-          trailing: IconButton(
-            icon: const Icon(Icons.delete, color: Colors.red),
-            onPressed: () => deleteCar(index), 
-        ),
-       );
-      },
-     ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          final result = await Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const VehiclePage()),
-          );
-              if (result != null && result is List<String>) {
-            setState(() {
-              selectedCars.addAll(result); 
-              saveCars();
-            });
-          }
-        },
-        child: const Icon(Icons.add), 
+      body: Column(
+        children: [
+          Expanded(
+            child: mySelectedCars.isEmpty
+                ?  Center(
+                    child: Text("No vehicles selected",
+                        style: GoogleFonts.getFont(
+                          'Lato',
+                          fontSize: 15,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold )
+                        ),
+                  )
+                : ListView.builder(
+                    itemCount: mySelectedCars.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        title: Text(mySelectedCars[index],
+                        style: GoogleFonts.getFont('Lato',
+                        color: Colors.white),),
+                        leading: const Icon(Icons.directions_car,color: Colors.white,),
+                      );
+                    },
+                  ),
+          ),
+        ],
       ),
     );
   }
- }
+}

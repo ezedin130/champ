@@ -16,7 +16,12 @@ void main ()async{
   
   WidgetsFlutterBinding.ensureInitialized();
   Noti().initNotification();
-  runApp(MyApp());
+  runApp(
+    DevicePreview(
+      enabled: true, // Set to false to disable
+      builder: (context) => MyApp(),
+    ),
+  );
 }
 class MyApp extends StatelessWidget {
     MyApp({super.key});
@@ -33,17 +38,16 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         scaffoldBackgroundColor: Colors.black
       ),
-      initialRoute: WelcomePage.id,
+      initialRoute: ProfilePage.id,
       routes: {
         'welcome': (context) =>  WelcomePage(),
         'register': (context) => const RegisterPage(),
         'login': (context) => const LoginPage(),
         'home': (context) => const  MainScreen(),
         'profile': (context) =>  ProfilePage(),
-        'vehicles': (context) =>  const CarPage(),
-      },
-      home:  ProfilePage(),
-      
+        'choice':(context) => VehiclePage(),
+        'vehicle':(context) => MyVehiclePage(),       
+      }, 
     );
   }
 }

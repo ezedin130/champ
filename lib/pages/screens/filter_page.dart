@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:map/pages/screens/my_vehicle.dart'; // Import MyVehiclePage
 
 class VehiclePage extends StatefulWidget {
+  static const id = 'choice';
+
   const VehiclePage({super.key});
 
   @override
@@ -9,10 +13,21 @@ class VehiclePage extends StatefulWidget {
 
 class _VehiclePageState extends State<VehiclePage> {
   final List<String> cars = [
-    'Tesla Model 3', 'Hyundai Ioniq 5', 'BMW i4', 'Tesla Model Y',
-    'Nissan Leaf', 'Chevrolet Bolt EV', 'Kia EV6', 'Ford Mustang Mach-E',
-    'Volkswagen ID.4', 'Audi e-tron', 'Rivian R1T', 'Ford F-150 Lightning',
-    'GMC Hummer EV', 'Tesla Cybertruck', 'Mercedes-Benz EQB'
+    'Tesla Model 3',
+    'Hyundai Ioniq 5',
+    'BMW i4',
+    'Tesla Model Y',
+    'Nissan Leaf',
+    'Chevrolet Bolt EV',
+    'Kia EV6',
+    'Ford Mustang Mach-E',
+    'Volkswagen ID.4',
+    'Audi e-tron',
+    'Rivian R1T',
+    'Ford F-150 Lightning',
+    'GMC Hummer EV',
+    'Tesla Cybertruck',
+    'Mercedes-Benz EQB'
   ];
   final List<String> selectedCars = [];
 
@@ -21,16 +36,10 @@ class _VehiclePageState extends State<VehiclePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black12,
-          leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white, size: 25), 
-          onPressed: () {
-           Navigator.pop(context); 
-    },
-  ),
         title: const Text(
           'EV CARS',
           style: TextStyle(
-            color: Colors.white, 
+            color: Colors.teal,
             fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
@@ -38,8 +47,27 @@ class _VehiclePageState extends State<VehiclePage> {
         actions: [
           IconButton(
             icon: const Icon(Icons.done),
-            onPressed: () {
-              Navigator.pop(context, selectedCars); 
+            onPressed: () async {
+              if (selectedCars.isNotEmpty) {
+                // Save selectedCars to SharedPreferences
+                final prefs = await SharedPreferences.getInstance();
+                await prefs.setStringList('selectedCars', selectedCars);
+
+                // Navigate to MyVehiclePage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MyVehiclePage(),
+                  ),
+                );
+              } else {
+                // Show a message if no cars are selected
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('Please select at least one car.'),
+                  ),
+                );
+              }
             },
           )
         ],
@@ -64,7 +92,7 @@ class _VehiclePageState extends State<VehiclePage> {
               margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 12),
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: isSelected ? const Color.fromARGB(255, 0, 0, 0) : const Color.fromARGB(255, 0, 0, 0),
+                color: isSelected ? const Color.fromARGB(255, 0, 0, 0) : Colors.black,
                 borderRadius: BorderRadius.circular(10),
               ),
               child: Row(
